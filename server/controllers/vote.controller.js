@@ -39,10 +39,13 @@ export const voteIdea = async (req, res) => {
             if (existingVote.ideaId.toString() === ideaId) {
                   return res.json({
                         success: true,
-                        userVote: existingVote,
+                        message: "You have already voted!!"
                   });
             }
 
+
+            // Once in 24 hours per user
+            
             // CASE 4: Change vote
             existingVote.ideaId = ideaId;
             await existingVote.save();

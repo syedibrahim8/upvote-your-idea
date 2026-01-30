@@ -1,5 +1,5 @@
 import express from "express";
-import { createIdea,getLeaderboard } from "../controllers/idea.controller.js";
+import { createIdea, getLeaderboard } from "../controllers/idea.controller.js";
 import authMiddleware from "../middleware/auth.middleware.js";
 
 const router = express.Router();
