@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api"; // your axios instance
+import api from "../api"; 
 
 export default function Submit() {
 
@@ -10,7 +10,7 @@ export default function Submit() {
   const navigate = useNavigate();
 
 
-  // Check if user is logged in
+  
   useEffect(() => {
 
     const checkAuth = async () => {
@@ -37,7 +37,7 @@ export default function Submit() {
   }, [navigate]);
 
 
-  // While checking auth
+  
   if (loading) {
     return (
       <div className="text-center mt-10">
@@ -47,15 +47,15 @@ export default function Submit() {
   }
 
 
-  // If not logged in (safety)
+
   if (!user) return null;
 
 
-  // Submit handler (placeholder)
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Backend later
+   
     console.log("Product submitted (placeholder)");
   };
 

@@ -31,7 +31,7 @@ export default function Register() {
   };
 
 
-  // Google Signup
+  
   const handleGoogle = async(res)=>{
 
     const result = await axios.post(
