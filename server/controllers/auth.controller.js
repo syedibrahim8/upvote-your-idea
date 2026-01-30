@@ -1,5 +1,5 @@
 import User from "../models/User.model.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import genTokenAndSetCookie from "../utils/genTokenAndSetCookie.js";
 import genOTP from "../utils/genOTP.js";
 import sendEmail from "../utils/sendEmail.js";
@@ -38,6 +38,8 @@ export const signup = async (req, res) => {
             );
 
             await user.save();
+
+            // BULLMQ
 
             res.status(201).json({
                   success: true,
@@ -95,6 +97,7 @@ export const login = async (req, res) => {
       try {
             let { email, password } = req.body;
             const user = await User.findOne({ email });
+            console.log(user)
             if (!user) {
                   return res.status(400).json({
                         success: false,
@@ -102,10 +105,14 @@ export const login = async (req, res) => {
                   });
             }
 
+            console.log(password,user.password)
+
             const isPasswordValid = await bcrypt.compare(
                   password,
                   user.password,
             );
+
+            console.log(isPasswordValid)
             if (!isPasswordValid) {
                   return res.status(400).json({
                         success: false,
